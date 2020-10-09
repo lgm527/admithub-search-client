@@ -1,68 +1,37 @@
+# AutoComplete + List Management
+The following coding exercise will have you implement an auto-suggest utility on a search bar that updates the results as you type, and then allow you to add one or many of the search results to a list. Some initial components/layout have been created for you, and will render on the right side of this preview. Only edit the JS / CSS sections for this assignment, do not edit this HTML section directly. You can add props, state, additional methods and components as you see fit.
+
+You're welcome to pull the code out into a separate editor if you prefer (part 4 may even require it to some extent), but the final output should be relatively easily demo-able by us in some fashion.
+
+Note: You can't save changes on this pen alone, so you'll want to select "Use this Template" or copy this skeleton into a new pen in order to have your changes saved and working on codepen.
+
+If you have any questions regarding this exercise, don't hesitate to reach out. That said, feel free to make assumptions or choices about implementation details that you think are reasonable and aren't explicitly mentioned in the exercise.
+
+## Part 1:
+Create a React component <CountryListItem /> which takes the name of a country and a url to a flag image as props, and displays it like so:
+
+
+Don't worry about the specific sizing or exact layout, but ensure that there is a '+' button justified on the right side. It won't do anything yet. You can use bootstrap classes for styling, it's packaged into this codepen.
+
+## Part 2:
+Whenever the user starts typing in the search bar, make a request to the Rest-Countries search endpoint (documentation here), which takes a search string and returns all the countries that contain the given string. This is the endpoint you want to hit (example):
+
+https://restcountries.eu/rest/v2/name/{name}
+Using the component created in part 1, display the name/image of the first 5 results returned from the API endpoint. Whenever the user changes what they've typed, the search results should update. While the network call is in progress, some loading state / message should be shown in the Search Results.
+
+## Part 3:
+Now that you have a functioning search, we want to make it so the user can "pin" certain items from that search to a separately managed list. Make it so that when the user hits the "+" button on a search item, it adds it to the "Selected Countries" list on the right, but only if that country is not already in the "Selected Countries" List.
+
+The "Selected Countries" list items should have the same UI as the items in the search list, but there should be an "x" button in place of the "+" button. Clicking on the "x" should remove that item from the list.
+
+## README for local setup
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Clone to local machine
 
-In the project directory, you can run:
+In app's main directory:
+```npm install```
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Start the app's server on local machine:
+```npm start```
