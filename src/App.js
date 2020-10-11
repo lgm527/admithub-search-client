@@ -22,10 +22,16 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(results => {
-        let firstFiveResults = results.slice(0,5)
-        this.setState({
-          searchResults: firstFiveResults
-        })
+        if (results[0]) {
+          let firstFiveResults = results.slice(0,5)
+          this.setState({
+            searchResults: firstFiveResults
+          })
+        } else {
+          this.setState({
+            searchResults: []
+          })
+        }
       })
     } else {
       this.setState({
@@ -64,6 +70,7 @@ class App extends React.Component {
           <div className="form-group">
             <label htmlFor="country">Country:</label>
             <input 
+            autoComplete="off"
             onChange={this.handleChange} 
             value={this.state.country}
             type="text" 
