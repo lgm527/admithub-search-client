@@ -56,7 +56,7 @@ class App extends React.Component {
   render() { 
     return ( 
       <div className="App">
-      <h1><span role="img" aria-label="owl">🦉</span> Hello AdmitHub Team <span role="img" aria-label="hand-waving">👋</span></h1>
+      <h1><span role="img" aria-label="owl">🦉</span> Hello AdmitHub Team! <span role="img" aria-label="hand-waving">👋</span></h1>
       
       <div className="row">
         <div className="col-sm-6">
