@@ -36,30 +36,35 @@ class App extends React.Component {
   
   render() { 
     return ( 
-      <div className="App">
+      <div className="App container">
       <h1><span role="img" aria-label="owl">🦉</span> Hello AdmitHub Team <span role="img" aria-label="hand-waving">👋</span></h1>
 
-      <div className="form-group">
-        <label htmlFor="country">Country:</label>
-        <input 
-        onChange={this.handleChange} 
-        value={this.state.country}
-        type="text" 
-        className="form-control" 
-        id="country" />
+
+      <div className="col-sm-6">
+        <div className="form-group">
+          <label htmlFor="country">Country:</label>
+          <input 
+          onChange={this.handleChange} 
+          value={this.state.country}
+          type="text" 
+          className="form-control" 
+          id="country" />
+        </div>
+
+        {
+          this.state.searchResults[0] ?
+          <SearchList results={this.state.searchResults} />
+          : null
+        }
       </div>
 
-      {
-        this.state.searchResults[0] ?
-        <SearchList results={this.state.searchResults} />
-        : null
-      }
-
-      {
-        this.state.pins[0] ?
-        <PinList pins={this.state.pins} />
-        : null
-      }
+      <div className="col-sm-6">
+        {
+          this.state.pins[0] ?
+          <PinList pins={this.state.pins} />
+          : null
+        }
+      </div>
 
     </div>
      );

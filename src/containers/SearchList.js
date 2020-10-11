@@ -3,7 +3,7 @@ import CountryListItem from "../components/CountryListItem";
 
 const SearchList = (props) => {
     console.log(props);
-    let results = props.results.map((country) => <CountryListItem country={country} />)
+    let results = props.results.map((country) => <CountryListItem key={country.numericCode} country={country} />)
     return ( 
         <div>
             {results}
