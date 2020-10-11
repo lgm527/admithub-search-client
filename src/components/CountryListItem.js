@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CountryListItem = () => {
+const CountryListItem = (props) => {
     return ( 
         <li className="list-group-item" style={{width:'50%'}}>
-          <img className="media-object" alt="flag" src="https://restcountries.eu/data/usa.svg" style={{width:'20px'}}/>
+          <img className="media-object" alt="flag" src={props.country.flag} style={{width:'20px'}}/>
           
-        CountryNamePlaceholder
+        {props.country.name}
 
         <button>+</button>
       </li>
