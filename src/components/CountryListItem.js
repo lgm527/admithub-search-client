@@ -16,7 +16,7 @@ const CountryListItem = (props) => {
         
         {props.country.name}
 
-        <button onClick={() => props.remove(props.country)}>-</button>
+        <button onClick={() => props.remove(props.country)}>x</button>
         </li>
      );
 }

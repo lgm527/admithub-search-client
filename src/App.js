@@ -36,21 +36,18 @@ class App extends React.Component {
 
   addPin = (pin) => {
     this.setState( prevState => (
-      prevState.pins.length !== 0 ?
-      {
-        pins: [prevState.pins, pin]
-      }
+      prevState.pins.indexOf(pin) === -1 ?
+      prevState.pins.length < 1 ?
+      {pins: [pin]} : {pins: [...prevState.pins, pin]}
       :
-      {
-        pins: [pin]
-      }
+      null
     ))
   }
 
   removePin = (pin) => {
     let pins = [...this.state.pins]
     let removeMe = pins.indexOf(pin)
-    if (removeMe !== -1) {
+    if (removeMe > -1) {
         pins.splice(removeMe, 1);
         this.setState({pins})
     }
@@ -63,6 +60,7 @@ class App extends React.Component {
       
       <div className="row">
         <div className="col-sm-6">
+          <h1>Search</h1>
           <div className="form-group">
             <label htmlFor="country">Country:</label>
             <input 
