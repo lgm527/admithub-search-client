@@ -1,4 +1,16 @@
-# AutoComplete + List Management
+## README 😎
+
+React 16.13.1 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Clone to local machine
+
+In app's main directory:
+```npm install```
+
+Start the app's server on local machine:
+```npm start```
+
+## AutoComplete + List Management
 The following coding exercise will have you implement an auto-suggest utility on a search bar that updates the results as you type, and then allow you to add one or many of the search results to a list. Some initial components/layout have been created for you, and will render on the right side of this preview. Only edit the JS / CSS sections for this assignment, do not edit this HTML section directly. You can add props, state, additional methods and components as you see fit.
 
 You're welcome to pull the code out into a separate editor if you prefer (part 4 may even require it to some extent), but the final output should be relatively easily demo-able by us in some fashion.
@@ -23,15 +35,3 @@ Using the component created in part 1, display the name/image of the first 5 res
 Now that you have a functioning search, we want to make it so the user can "pin" certain items from that search to a separately managed list. Make it so that when the user hits the "+" button on a search item, it adds it to the "Selected Countries" list on the right, but only if that country is not already in the "Selected Countries" List.
 
 The "Selected Countries" list items should have the same UI as the items in the search list, but there should be an "x" button in place of the "+" button. Clicking on the "x" should remove that item from the list.
-
-## README for local setup
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### Clone to local machine
-
-In app's main directory:
-```npm install```
-
-Start the app's server on local machine:
-```npm start```
