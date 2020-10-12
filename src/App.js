@@ -6,12 +6,16 @@ import PinList from './containers/PinList';
 class App extends React.Component {
   state = { 
     country: "",
+    loadingSearchResults: false,
     searchResults: [],
     pins: []
    }
 
    handleChange = (e) => {
-    this.setState({country: e.target.value});
+    this.setState({
+      country: e.target.value,
+      loadingSearchResults: true
+    })
     if (e.target.value !== "") {
       fetch(`https://restcountries.eu/rest/v2/name/${e.target.value}`, {
         method: "GET",
@@ -25,17 +29,20 @@ class App extends React.Component {
         if (results[0]) {
           let firstFiveResults = results.slice(0,5)
           this.setState({
-            searchResults: firstFiveResults
+            searchResults: firstFiveResults,
+            loadingSearchResults: false
           })
         } else {
           this.setState({
-            searchResults: []
+            searchResults: [],
+            loadingSearchResults: false
           })
         }
       })
     } else {
       this.setState({
-        searchResults: []
+        searchResults: [],
+        loadingSearchResults: false
       })
     }
   }
@@ -103,6 +110,15 @@ class App extends React.Component {
             className="form-control" 
             id="country" />
           </div>
+
+          {
+            this.state.loadingSearchResults ?
+            <div className="spinner-border" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+            :
+            null
+          }
 
           {
             this.state.searchResults[0] ?
