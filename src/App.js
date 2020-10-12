@@ -55,18 +55,20 @@ class App extends React.Component {
       .then(res => res.json())
       .then( () => {
         this.getPins()
-        let updatedPins = [...this.state.pins, pinObj]
-        this.setState({
-          pins: updatedPins
-        })
       })
     }
   }
 
   removePin = (pin) => {
-    let updatedPins = this.state.pins.filter(p => p.id !== pin.id)
-    this.setState({ pins: updatedPins })
-    fetch(`http://localhost:3000/countries/${pin.id}`, { method: "DELETE" })
+    fetch(`http://localhost:3000/countries/${pin.id}`, {
+      method: "DELETE",
+      headers: {
+        "Accept": "application/json"
+      }
+    })
+    .then( () => {
+      this.getPins()
+    })
   }
 
   getPins = () => {
