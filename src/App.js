@@ -41,22 +41,46 @@ class App extends React.Component {
   }
 
   addPin = (pin) => {
-    this.setState( prevState => (
-      prevState.pins.indexOf(pin) === -1 ?
-      prevState.pins.length < 1 ?
-      {pins: [pin]} : {pins: [...prevState.pins, pin]}
-      :
-      null
-    ))
+    let pinObj = {name: pin.name, flag: pin.flag}
+
+    if (!this.state.pins.some(pin => pin.name === pinObj.name)) {
+      fetch("http://localhost:3000/countries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(pinObj)
+      })
+      .then(res => res.json())
+      .then( () => {
+        this.getPins()
+        let updatedPins = [...this.state.pins, pinObj]
+        this.setState({
+          pins: updatedPins
+        })
+      })
+    }
   }
 
   removePin = (pin) => {
-    let pins = [...this.state.pins]
-    let removeMe = pins.indexOf(pin)
-    if (removeMe > -1) {
-        pins.splice(removeMe, 1);
-        this.setState({pins})
-    }
+    let updatedPins = this.state.pins.filter(p => p.id !== pin.id)
+    this.setState({ pins: updatedPins })
+    fetch(`http://localhost:3000/countries/${pin.id}`, { method: "DELETE" })
+  }
+
+  getPins = () => {
+    fetch("http://localhost:3000/countries")
+    .then(res => res.json())
+    .then(pins => {
+      this.setState({
+        pins: pins
+      })
+    })
+  }
+
+  componentDidMount() {
+    this.getPins()
   }
   
   render() { 
